@@ -78,7 +78,7 @@ export default {
         <td>
           <RouterLink
             class="tabContent charLocation"
-            :to="`/LocationDetails/${character.locationId}`"
+            :to="`/location-details/${character.locationId}`"
           >
             {{ character.Location }}
           </RouterLink>
