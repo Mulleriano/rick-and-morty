@@ -70,6 +70,12 @@ export default {
         );
       }
     },
+
+    handleSearch(src, sts) {
+      this.getCharacters(
+      
+      );
+    },
     handleStatus(status) {
       if (status.toLowerCase() == "dead") {
         return "dead";
@@ -123,14 +129,23 @@ export default {
 
     <Error v-show="error" @close="close" :textError="textError" />
 
-    <div class="container" v-show="!loading">
+    <div class="moreCharacters">
+      <button @click="prev" class="btn prev">
+        <span class="material-symbols-rounded center">arrow_back_ios_new</span>
+      </button>
+      <button @click="next" class="btn next">
+        <span class="material-symbols-rounded center">arrow_forward_ios</span>
+      </button>
+    </div>
+
+    <div id="characters-list" class="container" v-show="!loading">
       <div
-        class="character"
-        v-for="character in characters"
-        :key="character.id"
+      class="character"
+      v-for="character in characters"
+      :key="character.id"
       >
-        <img :src="`${character.image}`" alt="" />
-        <div class="charInfo">
+      <img :src="`${character.image}`" alt="" />
+      <div class="charInfo">
           <RouterLink :to="`/character/${character.id}`">
             <h2 class="charName">{{ character.name }}</h2>
           </RouterLink>
@@ -147,15 +162,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <div class="moreCharacters">
-      <button @click="prev" class="btn prev">
-        <span class="material-symbols-rounded center">arrow_back_ios_new</span>
-      </button>
-      <button @click="next" class="btn next">
-        <span class="material-symbols-rounded center">arrow_forward_ios</span>
-      </button>
-    </div>
   </main>
 </template>
 
@@ -166,5 +172,11 @@ main {
 
 .btn span {
   background: transparent;
+}
+
+#characters-list {
+  height: 50vh;
+  overflow: auto;
+  padding: 5rem;
 }
 </style>

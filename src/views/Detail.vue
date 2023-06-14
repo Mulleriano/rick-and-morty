@@ -1,5 +1,5 @@
 <script>
-import Episodes from "../components/Episodes.vue";
+import Episodes from "../components/EpisodesList.vue";
 
 export default {
   props: {
@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     this.getCharacter(
-      `https://rickandmortyapi.com/api/character/${this.characterId}`
+      `${import.meta.env.VITE_API_BASE_URL}/character/${this.characterId}`
     );
   },
 };
